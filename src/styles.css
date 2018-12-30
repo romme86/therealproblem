@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
+.main-title{
+    padding: 25px;
+    border-bottom:1px solid #999;
+}
