@@ -14,6 +14,13 @@ import { CoreModule } from './core/core.module';
 import { LocationModule } from './location/location.module';
 import { AuthModule } from './auth/auth.module';
 import { ProblemsComponent } from './problems/problems.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/store/auth.effects';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +36,11 @@ import { ProblemsComponent } from './problems/problems.component';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     LocationModule,
-    AuthModule
+    AuthModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AuthEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    // BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

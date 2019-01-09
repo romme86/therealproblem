@@ -7,3 +7,38 @@ body{
 .main-title{
     border-bottom:1px solid #999;
 }
+
+.btn-primary{
+    background-color: #214955;
+    border-color: #214955;
+}
+.btn-primary:hover{
+    background-color: #345D69;
+    border-color: #214955;
+}
+
+.btn-primary:disabled{
+    background-color: rgba(0,123,255,.25);
+}
+
+.form-control:focus{
+    border-color: #345D69;
+    box-shadow: 0 0 0 0.2rem rgba(52,93,105,.25);
+}
+a{
+    color: #027C9E;
+    /* font-weight: bold; */
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched{
+    border-color: #7C2D42;
+    box-shadow: 0 0 0 0.2rem rgba(124, 45, 66,.25);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-text.text-muted.text-muted-error{
+    font-size: 0.8rem;
+    color:#7C2D42 !important;
+}
