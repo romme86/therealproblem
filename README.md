@@ -1,5 +1,29 @@
-# Therealproblem
+# therealproblem
+everybody is out of focus.
 
+A simple web app to manage problem democratically by location.
+
+######we have 4 kinds of locations:
+World, Nation, City, Area.
+
+Every location will be showing the first ten problems posted by inhabitants and voted (ordered by vote)
+Every problem once clicked will be showing solutions written by inhabitants and voted (ordered by vote)
+
+###### A user can:
+register 
+recover password 
+login
+identify for a city
+post a problem
+post a solution
+vote a problem (not his)
+vote a solution (not his)
+change city
+
+
+
+
+----------------------------------------------------------------------------------------------------
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
 
 ## Development server
