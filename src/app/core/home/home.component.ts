@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
   constructor(public store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
-    console.log('auth? ',this.store.select('auth'));
   }
 
 }

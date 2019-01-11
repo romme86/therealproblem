@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private store: Store<fromApp.AppState>) { }
 
-  user = new User("","","");
+  user = new User("","","","");
 
   ngOnInit() {
   }

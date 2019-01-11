@@ -47,7 +47,6 @@ export class AuthEffects {
     authSignin = this.actions$.pipe(
         ofType(TRY_SIGNIN),
         map((action: AuthActions.TrySignin) => {
-            console.log('lets try to signin');
             return action.payload;
         }),
         switchMap((authData: { email: string, password: string}) => {
@@ -61,19 +60,18 @@ export class AuthEffects {
         //     console.log('arrayResult: ',arrayResult);
         //     return from(firebase.auth().currentUser.getIdToken());
         // }),
-        // mergeMap((token) => {
-        //     console.log('token: ', token)
-        //     this.router.navigate(['/']);
-        //     return [
-        //         {
-        //             type: AuthActions.SIGNIN,
-        //         },
-        //         // {
-        //         //     type: AuthActions.SET_TOKEN,
-        //         //     token:token
-        //         // },
-        //     ]
-        // })
+        mergeMap((token) => {
+            this.router.navigate(['/']);
+            return [
+                {
+                    type: AuthActions.SIGNIN,
+                },
+                // {
+                //     type: AuthActions.SET_TOKEN,
+                //     token:token
+                // },
+            ]
+        })
 
     )
 }

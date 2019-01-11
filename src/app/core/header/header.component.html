@@ -8,11 +8,18 @@
         <li class="nav-item"><a class="nav-link">city</a></li>
         <li class="nav-item"><a class="nav-link">zone</a></li>
     </ul>
-    <ul class="navbar-nav ml-5">
-        <li class="nav-item" *ngIf="authAF.user | async as user; else showLogin"><a class="nav-link" routerLink="signout">signout</a></li>
-        <ng-template #showLogin>
+    <ul class="navbar-nav ml-5" *ngIf="authAF.user | async as user; else showLogin">
+        <li class="nav-item"><a class="nav-link">hallo</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="userdetails">{{user.email}}</a></li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="signout">signout</a>
+        </li>
+    </ul>
+    <ng-template #showLogin>
+        <ul>
             <li class="nav-item"><a class="nav-link" routerLink="signin">signin</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="signup">signup</a></li>
-        </ng-template>
-    </ul>
+        </ul>
+    </ng-template>
+
 </nav>
