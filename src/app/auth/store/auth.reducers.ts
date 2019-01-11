@@ -25,17 +25,19 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
                 stateCode: action.payload.stateIdCode
             };
         case AuthActions.SET_TOKEN:
-            console.log('set token reducer');
+            console.log('set token reducer: ' , action.token);
             return {
                 ...state,
-                stateCode: action.token
+                token: action.token
             }
         case AuthActions.SIGNIN:
             console.log('signin reducer');
-            return {...state}
-        case AuthActions.TRY_SIGNIN:
-            console.log('try signin reducer');
-            return {...state}
+            return {...state,
+                    authenticated:true
+                }
+        // case AuthActions.TRY_SIGNIN:
+        //     console.log('try signin reducer');
+        //     return {...state}
         default:
             return state;
     }

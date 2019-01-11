@@ -7,10 +7,11 @@ import { map, switchMap, mergeMap } from 'rxjs/operators';
 import { TRY_SIGNUP, TRY_SIGNIN } from './auth.actions';
 import * as firebase from 'firebase';
 import * as AuthActions from './auth.actions';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable()
 export class AuthEffects {
-    constructor(private actions$: Actions, private router: Router) { }
+    constructor(private actions$: Actions, private router: Router, private authAF: AngularFireAuth) { }
     @Effect()
     authSignup = this.actions$.pipe(
         ofType(TRY_SIGNUP),
@@ -50,26 +51,29 @@ export class AuthEffects {
             return action.payload;
         }),
         switchMap((authData: { email: string, password: string}) => {
-            console.log(authData);
-            return from(firebase.auth().signInWithEmailAndPassword(authData.email,authData.password));
-        }),
-        switchMap((arrayResult) => {
-            console.log(arrayResult);
-            return from(firebase.auth().currentUser.getIdToken());
-        }),
-        mergeMap((token) => {
+            console.log('authData: ',authData);
             this.router.navigate(['/']);
-            return [
-                {
-                    type: AuthActions.SIGNIN,
-                },
-                {
-                    type: AuthActions.SET_TOKEN,
-                    payload:token //the token
-                
-                },
-            ]
-        })
+            return this.authAF.auth.signInWithEmailAndPassword(authData.email,authData.password);
+            // return null;
+            // return from(firebase.auth().signInWithEmailAndPassword(authData.email,authData.password));
+        }),
+        // switchMap((arrayResult) => {
+        //     console.log('arrayResult: ',arrayResult);
+        //     return from(firebase.auth().currentUser.getIdToken());
+        // }),
+        // mergeMap((token) => {
+        //     console.log('token: ', token)
+        //     this.router.navigate(['/']);
+        //     return [
+        //         {
+        //             type: AuthActions.SIGNIN,
+        //         },
+        //         // {
+        //         //     type: AuthActions.SET_TOKEN,
+        //         //     token:token
+        //         // },
+        //     ]
+        // })
 
     )
 }
