@@ -1,0 +1,61 @@
+<div class="row mt-4">
+  <div class="col-xs-12 col-sm-10 col-md-12 col-sm-offset-8 col-md-offset-8">
+    <h2>User Profile</h2>
+    <form (ngSubmit)="onEdit(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="name" 
+          name="name" 
+          [(ngModel)] = user.name
+          #name="ngModel" 
+          required>
+          <div class="form-text text-muted text-muted-error" *ngIf="!name.valid && name.touched" >
+              please enter your name
+            </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Surname</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="surname" 
+          name="surname" 
+          [(ngModel)] = user.surname
+          #surname="ngModel"  
+          required>
+          <div class="form-text text-muted text-muted-error" *ngIf="!surname.valid && surname.touched" >
+              please enter your surname
+            </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="name" 
+          name="name" 
+          readonly 
+          value="{{user.email}}">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="city" 
+          name="city" 
+          [(ngModel)] = user.city
+          #city="ngModel"
+          required>
+          <div class="form-text text-muted text-muted-error" *ngIf="!city.valid && city.touched" >
+              please enter the city where you live
+            </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!f.valid">Save Changes</button>
+
+    </form>
+  </div>
+</div>

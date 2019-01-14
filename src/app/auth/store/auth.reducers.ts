@@ -33,7 +33,8 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         case AuthActions.SIGNIN:
             console.log('signin reducer');
             return {...state,
-                    authenticated:true
+                    authenticated:true,
+                    email: action.payload.email
                 }
         // case AuthActions.TRY_SIGNIN:
         //     console.log('try signin reducer');

@@ -19,6 +19,7 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
+import { UserModule } from './user/user.module';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -37,8 +38,9 @@ import { AuthEffects } from './auth/store/auth.effects';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     LocationModule,
     AuthModule,
+    UserModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects]), 
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     // BrowserAnimationsModule,
   ],
