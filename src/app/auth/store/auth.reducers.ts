@@ -1,13 +1,11 @@
 import * as AuthActions from './auth.actions';
 
 export interface State {
-    token: string,
-    authenticated: boolean
+
 }
 
 const initialState = {
-    token: null,
-    authenticated: false
+
 }
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
@@ -25,21 +23,21 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
                 stateCode: action.payload.stateIdCode
             };
         case AuthActions.SET_TOKEN:
-            console.log('set token reducer: ' , action.token);
+            console.log('set token reducer: ', action.token);
             return {
                 ...state,
                 token: action.token
             }
         case AuthActions.SIGNIN:
             console.log('signin reducer');
-            return {...state,
-                    authenticated:true,
-                    email: action.payload.email
-                }
-        // case AuthActions.TRY_SIGNIN:
-        //     console.log('try signin reducer');
-        //     return {...state}
+            return {
+                ...state,
+                authenticated: true,
+                email: action.payload.email
+            }
+
         default:
+            console.log('auth default fired')
             return state;
     }
 

@@ -13,10 +13,11 @@ export function userReducer(state = initialState, action: UserActions.UserAction
         console.log("user reducer:", action.user); 
         return {
             ...state,
-            user: {...action.user}
+            ...action.user,
         };
         
         default:
+            console.log('user default fired')
             return state;
     }
 }

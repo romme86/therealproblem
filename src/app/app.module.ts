@@ -20,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
 import { UserModule } from './user/user.module';
+import { UserEffects } from './user/store/user.effects';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -40,7 +41,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     UserModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AuthEffects]), 
+    EffectsModule.forRoot([AuthEffects,UserEffects]), 
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     // BrowserAnimationsModule,
   ],

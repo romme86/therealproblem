@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {  Router } from '@angular/router';
-
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../reducers/index';
+import * as UserActions from '../../user/store/user.actions';
+import { User } from 'src/app/shared/user.model';
 @Component({
   selector: 'app-signout',
   templateUrl: './signout.component.html',
@@ -9,12 +12,15 @@ import {  Router } from '@angular/router';
 })
 export class SignoutComponent implements OnInit {
 
-  constructor(private authAF: AngularFireAuth, private router: Router) { }
+  constructor(public store: Store<fromApp.AppState>, private authAF: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
   }
-  signout(){
+  signout() {
+    console.log('signout');
     this.authAF.auth.signOut();
     this.router.navigate(['/']);
+    this.store.dispatch(new UserActions.UpdateUser(new User('','','','','','')));
+
   }
 }
