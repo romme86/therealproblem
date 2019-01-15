@@ -7,13 +7,16 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as fromAuth from '../auth/store/auth.reducers';
-
+import * as fromUser from '../user/store/user.reducers';
+import { User } from '../shared/user.model';
 export interface AppState {
-  auth: fromAuth.State
+  auth: fromAuth.State,
+  user:User
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  auth: fromAuth.authReducer
+  auth: fromAuth.authReducer,
+  user: fromUser.userReducer
   
 };
 
